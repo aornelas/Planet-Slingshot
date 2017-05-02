@@ -41,8 +41,7 @@ public class PlanetSpawner : MonoBehaviour {
 
 	private void PullPlanet (float strength)
 	{
-		planet.transform.position = new Vector3(planet.transform.position.x, planet.transform.position.y,
-				transform.position.z - (strength * forceMultiplier));
+		planet.transform.position = Vector3.MoveTowards(transform.position, transform.position * (1 - strength), 10f);
 	}
 
 	private void LaunchPlanet (float strength)
