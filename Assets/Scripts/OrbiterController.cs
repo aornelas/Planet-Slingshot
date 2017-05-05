@@ -6,7 +6,7 @@ public class OrbiterController : MonoBehaviour {
 	void OnTriggerEnter(Collider other) 
 	{		
 		other.GetComponent<AudioSource>().Play();
-		if (other.tag == "Black Hole")
+		if (other.tag == "blackhole")
 		{
 			this.gameObject.SetActive(false);
 		}
