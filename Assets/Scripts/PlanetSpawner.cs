@@ -35,13 +35,13 @@ public class PlanetSpawner : MonoBehaviour {
 	private void SpawnPlanet ()
 	{
 		planet = (GameObject) Instantiate(planetPrefab, transform.position, new Quaternion());
-		planet.transform.localScale = transform.localScale;
 		planet.transform.parent = this.transform;
 	}
 
 	private void PullPlanet (float strength)
 	{
-		planet.transform.position = Vector3.MoveTowards(transform.position, transform.position * (1 - strength), 10f);
+		Vector3 target = transform.position + transform.forward * strength * forceMultiplier;
+		planet.transform.position = Vector3.MoveTowards(transform.position, target, 10f);
 	}
 
 	private void LaunchPlanet (float strength)
