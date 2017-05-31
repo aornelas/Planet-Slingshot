@@ -7,7 +7,7 @@ public class PlanetSpawner : MonoBehaviour {
 	public GameObject planetParent;
 	public GravityAttractor blackHole;
 	public float thrust = 10f;
-	public float torque = 2500f;
+	public float torque = 250f;
 	public float forceMultiplier = 2f;
 
 	private GameObject planet;
@@ -52,7 +52,7 @@ public class PlanetSpawner : MonoBehaviour {
 		planet.GetComponent<GravityBody>().attractor = blackHole;
 		float force = strength * forceMultiplier * thrust;
 		planet.GetComponent<Rigidbody>().AddForce(transform.forward * force * -1, ForceMode.VelocityChange);
-//		planet.GetComponent<Rigidbody>().AddTorque(transform.up * torque);
+		planet.GetComponent<Rigidbody>().AddTorque(transform.up * torque);
 		planet.transform.parent = planetParent.transform;
 	}
 }
