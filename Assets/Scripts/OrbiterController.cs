@@ -8,7 +8,7 @@ public class OrbiterController : MonoBehaviour {
 		other.GetComponent<AudioSource>().Play();
 		if (other.tag == "blackhole")
 		{
-			other.GetComponent<ParticleSystem>().Emit(1);
+//			other.GetComponent<ParticleSystem>().Emit(1);
 			this.gameObject.SetActive(false);
 		}
 	}

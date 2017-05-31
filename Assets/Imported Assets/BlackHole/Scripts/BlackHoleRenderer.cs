@@ -45,17 +45,17 @@ public class BlackHoleRenderer : MonoBehaviour {
 		}
 	}
 
+	Vector3 wtsp;
 	void OnRenderImage (RenderTexture source, RenderTexture destination) 
 	{
 		if (shader && material && BH != null) 
 		{
+			wtsp = Cam.WorldToScreenPoint(BH.position);
 			// Find the position of the black hole in screen coordinates
-			Vector2 pos = new Vector2(
-				Camera.current.WorldToScreenPoint (BH.position).x / Camera.current.pixelWidth,
-				Camera.current.WorldToScreenPoint (BH.position).y / Camera.current.pixelHeight);
+			Vector2 pos = new Vector2(wtsp.x / Cam.pixelWidth, wtsp.y / Cam.pixelHeight);
 
 			// Install all the required parameters for the shader
-			material.SetVector("_Position", new Vector2(pos.x, 1-pos.y));
+			material.SetVector("_Position", new Vector2(pos.x, pos.y));
 			material.SetFloat("_Ratio", ratio);
 			Vector3 ScreenPos = Camera.current.WorldToScreenPoint (BH.position);
 			if((ScreenPos.x > Camera.current.pixelWidth || ScreenPos.x < 0) || (ScreenPos.y > Camera.current.pixelHeight || ScreenPos.y < 0))

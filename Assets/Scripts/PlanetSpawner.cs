@@ -40,7 +40,7 @@ public class PlanetSpawner : MonoBehaviour {
 
 	private void PullPlanet (float strength)
 	{
-		Vector3 target = transform.position + transform.forward * strength * forceMultiplier;
+		Vector3 target = transform.position + transform.forward * strength * forceMultiplier * 1.5f;
 		planet.transform.position = Vector3.MoveTowards(transform.position, target, 10f);
 	}
 
@@ -52,7 +52,7 @@ public class PlanetSpawner : MonoBehaviour {
 		planet.GetComponent<GravityBody>().attractor = blackHole;
 		float force = strength * forceMultiplier * thrust;
 		planet.GetComponent<Rigidbody>().AddForce(transform.forward * force * -1, ForceMode.VelocityChange);
-		planet.GetComponent<Rigidbody>().AddTorque(transform.up * torque);
+//		planet.GetComponent<Rigidbody>().AddTorque(transform.up * torque);
 		planet.transform.parent = planetParent.transform;
 	}
 }

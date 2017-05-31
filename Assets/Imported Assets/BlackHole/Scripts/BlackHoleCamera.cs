@@ -38,7 +38,7 @@ public class BlackHoleCamera : MonoBehaviour
 		BHR = cam.AddComponent<BlackHoleRenderer>();
 		BHR.BH = BlackHoleTransform;
 		BHR.EinsteinRadiusCompliance = EinsteinRadiusCompliance;
-		BHR.ratio = Screen.height / Screen.width;
+		BHR.ratio = 1f / Cam.aspect;// Screen.height / Screen.width;
 		BHR.radius = Radius;
 	}
 
